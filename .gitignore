@@ -1,0 +1,7 @@
+.idea/*
+*.egg-info
+*.egg
+*.py[co]
+build/*
+dist/*
+local.db

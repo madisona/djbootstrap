@@ -1,0 +1,16 @@
+
+DjBootstrap
+
+Helps kickstart your django app using the awesome twitter bootstrap library.
+
+http://twitter.github.com/bootstrap/
+
+INSTALLATION
+>>> pip install djbootstrap
+
+Just add djbootstrap to your INSTALLED_APPS
+
+Provides:
+a base.html as a base template if you want to use it.
+a bootstrapped_form.html template to make your forms pretty
+a notification_center.html template to make django messages framework pretty.

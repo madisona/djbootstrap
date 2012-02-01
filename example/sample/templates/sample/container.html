@@ -1,0 +1,20 @@
+{% extends "sample/base_container.html" %}
+
+
+{% block navbar %}
+  {% include "sample/navbar.html" %}
+{% endblock %}
+
+{% block page-name %}Page name{% endblock %}
+{% block page-tagline %}Tagline or supporting text{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="span7">
+    <h2>Main content</h2>
+  </div>
+  <div class="span3">
+    <h3>Secondary content</h3>
+  </div>
+</div>
+{% endblock %}

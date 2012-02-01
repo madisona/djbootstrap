@@ -1,0 +1,32 @@
+{% spaceless %}<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}DjBootstrap - Kickstart your app{% endblock %}</title>
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+
+        <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="{{ STATIC_URL }}djbootstrap/js/html5shiv-v3.js"></script>
+        <![endif]-->
+        <link href="{{ STATIC_URL }}djbootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+            {% block css %}{% endblock %}
+        </style>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        {% block navbar %}{% endblock %}
+        {% block body_content %}{% endblock %}
+
+        {% block jquery_js %}
+        <script src="{{ STATIC_URL }}djbootstrap/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        {% endblock %}
+        {% block bootstrap_js %}
+        <script src="{{ STATIC_URL }}djbootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        {% endblock %}
+        {% block js %}{% endblock %}
+    </body>
+</html>
+{% endspaceless %}

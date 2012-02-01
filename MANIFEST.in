@@ -1,0 +1,4 @@
+include LICENSE
+
+recursive-include djbootstrap/static *
+recursive-include djbootstrap/templates *

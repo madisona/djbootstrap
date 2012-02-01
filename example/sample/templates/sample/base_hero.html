@@ -1,0 +1,22 @@
+{% extends "djbootstrap/base.html" %}
+
+{% block css %}{{ block.super }}
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+{% endblock %}
+
+{% block body_content %}
+<div class="container">
+    {% block notification-center %}
+        {% include "djbootstrap/notification_center.html" %}
+    {% endblock %}
+    {% block content %}{% endblock %}
+    <footer>
+        {% block footer %}
+        <p>&copy; Company {% now "Y" %}</p>
+        {% endblock %}
+    </footer>
+</div> <!-- /container -->
+{% endblock %}

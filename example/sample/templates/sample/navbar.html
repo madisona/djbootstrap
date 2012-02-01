@@ -1,0 +1,21 @@
+{% load bootstrap_tags %}
+{% url index as index_url %}
+{% url hero as hero_url %}
+{% url container as container_url %}
+{% url fluid as fluid_url %}
+
+{% spaceless %}
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Bootstrap Sample</a>
+      <ul class="nav">
+        <li class="{% activate index_url %}"><a href="{{ index_url }}">Home</a></li>
+        <li class="{% activate hero_url %}"><a href="{{ hero_url }}">Hero</a></li>
+        <li class="{% activate container_url %}"><a href="{{ container_url }}">Container</a></li>
+        <li class="{% activate fluid_url %}"><a href="{{ fluid_url }}">Fluid</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endspaceless %}
