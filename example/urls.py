@@ -4,11 +4,29 @@ from django.conf.urls.defaults import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
-from django.views.generic import TemplateView
+from django import forms
+from django.contrib import messages
+from django.views.generic import TemplateView, FormView
+
+class SampleForm(forms.Form):
+    name = forms.CharField()
+    email = forms.EmailField(max_length=200, help_text="Enter your email address")
+    message = forms.CharField(required=False, widget=forms.Textarea())
+
+class IndexView(FormView):
+    form_class = SampleForm
+
+    def form_valid(self, form):
+        response = super(IndexView, self).form_valid(form)
+        messages.success(self.request, "Thanks! Your fake message went nowhere.")
+        return response
+
+    def get_success_url(self):
+        return self.request.path
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', TemplateView.as_view(
+    url(r'^$', IndexView.as_view(
             template_name="sample/index.html"
         ), name='index'),
     url(r'^hero/$', TemplateView.as_view(

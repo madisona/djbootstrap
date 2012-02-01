@@ -12,7 +12,36 @@ body {
 
 {% block body_content %}
 <div class="container">
-<h1>Welcome to the samples.</h1>
-<h2><small>Click around to see some examples.</small></h2>
+    <h1>Welcome to the samples.</h1>
+    <h2><small>Click around to see some examples.</small></h2>
+    {% include "djbootstrap/notification_center.html" %}
+    
+    <div class="row">
+        <div class='span12'>
+            <p class="alert alert-block">Here are a couple forms that showcase the "bootstrapped_form" template.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h2 class="controls" style="text-align: center;">Horizontal Form</h2>
+
+            <form action="" method="post" class="form-horizontal">{% csrf_token %}
+                {% include "djbootstrap/bootstrapped_form.html" %}
+                <div class="controls">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>        
+        </div>
+        <div class="span6">
+            <h2>Vertical Form</h2>
+            <form action="" method="post">{% csrf_token %}
+                {% include "djbootstrap/bootstrapped_form.html" %}
+                <div>
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    
 </div>
 {% endblock %}
