@@ -12,6 +12,7 @@ class SampleForm(forms.Form):
     name = forms.CharField()
     email = forms.EmailField(max_length=200, help_text="Enter your email address")
     message = forms.CharField(required=False, widget=forms.Textarea())
+    hidden_field = forms.CharField(widget=forms.HiddenInput())
 
 class IndexView(FormView):
     form_class = SampleForm
