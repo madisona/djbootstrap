@@ -6,7 +6,8 @@
     {% endfor %}
   </ul>
 {% endif %}
-{% for field in form %}
+<div style="display:none;">{% for field in form.hidden_fields %}{{ field }}{% endfor %}</div>
+{% for field in form.visible_fields %}
   <fieldset class="control-group{% if field.errors %} error{% endif %}">
     <label class="control-label" for="{{ field.auto_id }}">
       {% if field.field.required %}
