@@ -2,6 +2,8 @@
 from django import template
 from django import test
 
+from djbootstrap.templatetags.bootstrap_tags import activate
+
 class ActivateTemplateTagTests(test.TestCase):
 
     def test_returns_active_when_request_is_same_path(self):
@@ -25,3 +27,8 @@ class ActivateTemplateTagTests(test.TestCase):
         context = template.RequestContext(request)
         response = t.render(context)
         self.assertEqual('<a href="/home/page/" class="">Nav Tab</a>', response.strip())
+
+    def test_returns_empty_string_when_doesnt_have_request_context(self):
+        context = template.Context({})
+        result = activate(context, "/")
+        self.assertEqual("", result)

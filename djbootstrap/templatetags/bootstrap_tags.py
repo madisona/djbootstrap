@@ -14,5 +14,10 @@ def activate(context, path):
 
     The 'django.core.context_processors.request' context processor
     must be activated in your settings.
+
+    In an exception, django doesnt use a RequestContext, so we can't
+    necessarily always assume it being present.
     """
-    return bool(context['request'].path == path) and "active" or ""
+    if 'request' in context:
+        return bool(context['request'].path == path) and "active" or ""
+    return ''
