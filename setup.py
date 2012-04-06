@@ -2,14 +2,14 @@
 from setuptools import setup, find_packages
 
 REQUIREMENTS = (
-    'django>=1.3',
+    'django>=1.4',
 )
 
-from djbootstrap import VERSION
+from djbootstrap import __version__
 
 setup(
     name="djbootstrap",
-    version=VERSION,
+    version=__version__,
     author="Aaron Madison",
     description="Kickstart your django app with twitter bootstrap.",
     long_description=open('README', 'r').read(),
