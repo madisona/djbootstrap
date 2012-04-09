@@ -1,0 +1,192 @@
+{% load url from future %}
+{% load i18n static bootstrap_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{% bootstrap 'css/bootstrap.min.css' %}">
+<style>
+.sidebar {
+  overflow: hidden;
+}
+
+.sidebar td {
+  border: none;
+}
+
+.sidebar h6 {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.object-tools {
+    margin-bottom: 10px;
+}
+
+form .clearfix {
+    border-top: 1px solid #DDDDDD;
+    padding-top: 8px;
+    margin-bottom: 8px;
+}
+
+form table .clearfix {
+    border-top: 0px solid #DDDDDD;
+}
+
+table th.label, table tr.label {
+    color: #efefef;
+    background-color: #333;
+    font-size: 1.2em;
+}
+table th.label a {
+    color: #efefef;
+}
+
+.help-block {
+    color: #BFBFBF;
+}
+
+#changelist table#result_list tbody td:first-child {
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+/* Login form */
+body.login {background-color: #eee;}
+body.login #content {
+    text-align: left;
+    width: 28em;
+    min-width: 300px;
+    margin: auto;
+}
+body.login #content-main {
+    padding: 20px;
+    margin: 0 -20px;
+    background-color: #fff;
+
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+body.login .page-header {
+    background-color: whiteSmoke;
+    padding: 10px 20px;
+    margin: 0 -20px;  /*undo margin from bootstrap.css, negative indent to match .content width*/
+
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.sidebar .my-actions-table .label a {color: #fff;}
+.sidebar .my-actions-table h6 {margin-top: 5px;}
+
+</style>
+{% block extrastyle %}{% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="{% bootstrap 'js/bootstrap.min.js' %}"></script>
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}" {% if not is_popup %}style="padding-top: 50px;"{% endif %}>
+
+    {% if not is_popup %}
+    <!-- Header -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <span class="brand">{% block branding %}{% endblock %}</span>
+        <!-- DropDown -->
+        <ul class="nav pull-right">
+          {% block userlinks %}
+          {% if user.is_active and user.is_staff %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Welcome" %}
+                <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong>.<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                  {% url 'django-admindocs-docroot' as docsroot %}
+                  {% if docsroot %}
+                      <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                  {% endif %}
+                  {% url 'admin:password_change' as password_change_url %}
+                  {% if password_change_url %}
+                      <li><a href="{{ password_change_url }}">
+                  {% else %}
+                      <li><a href="{{ root_path }}password_change/">
+                  {% endif %}
+                  {% trans 'Change password' %}</a></li>
+                  <li class="divider"></li>
+                  {% url 'admin:logout' as logout_url %}
+                  {% if logout_url %}
+                      <li><a href="{{ logout_url }}">
+                  {% else %}
+                      <li><a href="{{ root_path }}logout/">
+                  {% endif %}
+                  {% trans 'Log out' %}</a></li>
+              </ul>
+            </li>
+          {% endif %}
+          {% endblock %}
+        </ul>
+    </div>
+  </div>
+</div>
+    <!-- END Header -->
+
+    {% block breadcrumbs %}
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+        <li><a href="#">{% trans 'Home' %}</a> <span class="divider">/</span></li>
+        {% if title %}  
+          <li class="active">{{ title }}</li>
+        {% endif %}
+      </ul>
+    {% endblock %}
+    </div>
+{% endif %}
+
+<!-- Container -->
+<div class="container-fluid" style="{% if is_popup %}min-width: 740px;{% endif %}">
+
+    {% if messages %}
+      {% for message in messages %}
+        <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+
+{% block internal_content %}
+    {% block sidebar %}{% endblock %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h2>{{ title }}</h2>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        <br class="clear" />
+    </div>
+    {% endblock %}
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+<!-- END Container -->
+
+</body>
+</html>

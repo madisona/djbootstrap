@@ -1,0 +1,41 @@
+{% extends "admin/base_site.html" %}
+{% load i18n bootstrap_tags %}
+
+{% comment %}
+{% block extrastyle %}{% load adminmedia %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/login.css" />{% endblock %}
+{% endcomment %}
+
+{% block bodyclass %}login{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Admin Login</h2>
+</div>
+
+<div id="content-main" class="content">
+    {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
+    <p class="alert alert-error">
+        {% blocktrans count form.errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </p>
+    {% endif %}
+    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+
+      {% bootstrap_form form %}
+      <div class="input">
+        <input type="hidden" name="this_is_the_login_form" value="1" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="submit" class="btn" value="{% trans 'Log in' %}" />
+      </div>
+    </form>
+
+    <script type="text/javascript">
+    document.getElementById('id_username').focus()
+    </script>
+</div>
+{% endblock %}

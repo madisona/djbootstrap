@@ -41,3 +41,8 @@ def bootstrap(path):
     version = get_bootstrap_version()
     bootstrap_file = urlparse.urljoin("bootstrap/{0}/".format(version), path)
     return staticfiles_storage.url(bootstrap_file)
+
+
+@register.inclusion_tag("djbootstrap/bootstrapped_form.html")
+def bootstrap_form(form):
+    return {'form': form}
