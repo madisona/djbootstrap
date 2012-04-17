@@ -1,5 +1,5 @@
 {% load url from future %}
-{% load i18n static bootstrap_tags %}
+{% load i18n admin_static bootstrap_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,7 @@
 {% block extrastyle %}{% endblock %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="{% bootstrap 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 </head>
