@@ -21,3 +21,8 @@ def activate(context, path):
     if 'request' in context:
         return bool(context['request'].path == path) and "active" or ""
     return ''
+
+
+@register.inclusion_tag("djbootstrap/bootstrapped_form.html")
+def bootstrapped_form(f):
+    return {'form': f}

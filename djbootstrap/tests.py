@@ -1,8 +1,9 @@
 
+from django import forms
 from django import template
 from django import test
 
-from djbootstrap.templatetags.bootstrap_tags import activate
+from djbootstrap.templatetags.bootstrap_tags import activate, bootstrapped_form
 
 class ActivateTemplateTagTests(test.TestCase):
 
@@ -32,3 +33,16 @@ class ActivateTemplateTagTests(test.TestCase):
         context = template.Context({})
         result = activate(context, "/")
         self.assertEqual("", result)
+
+
+class TestForm(forms.Form):
+    one = forms.CharField(max_length=10)
+
+
+class BootstrapFormTests(test.TestCase):
+
+    def test_returns_dict_of_form(self):
+        f = TestForm()
+        self.assertEqual({'form': f}, bootstrapped_form(f))
+
+
