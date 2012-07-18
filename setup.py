@@ -14,7 +14,7 @@ setup(
     description="Kickstart your django app with twitter bootstrap.",
     long_description=open('README.rst', 'r').read(),
     url="https://github.com/madisona/djbootstrap",
-    packages=find_packages(exclude=["example"]),
+    packages=find_packages(exclude=["example*"]),
     include_package_data=True,
     install_requires=REQUIREMENTS,
     zip_safe=False,
