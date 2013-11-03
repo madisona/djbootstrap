@@ -9,9 +9,9 @@ from django.contrib import messages
 from django.views.generic import TemplateView, FormView
 
 class SampleForm(forms.Form):
-    name = forms.CharField()
-    email = forms.EmailField(max_length=200, help_text="Enter your email address")
-    message = forms.CharField(required=False, widget=forms.Textarea())
+    name = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
+    email = forms.EmailField(max_length=200, help_text="Enter your email address", widget=forms.TextInput(attrs={"class": "form-control"}))
+    message = forms.CharField(required=False, widget=forms.Textarea(attrs={"class": "form-control"}))
     hidden_field = forms.CharField(widget=forms.HiddenInput())
 
 class IndexView(FormView):
