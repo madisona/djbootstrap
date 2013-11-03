@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 REQUIREMENTS = (
-    'django>=1.3',
+    'django>=1.5',
 )
 
 from djbootstrap import VERSION

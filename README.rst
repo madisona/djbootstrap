@@ -4,7 +4,11 @@ DjBootstrap
 
 Helps kickstart your django app using the awesome twitter bootstrap library.
 
-http://twitter.github.com/bootstrap/
+http://getbootstrap.com
+
+As of version 3.0.1 Django 1.5+ is recommended. The sample app will only work with django 1.5+, but the actual
+bootstrap stuff should work just fine.
+
 
 INSTALLATION
 ------------

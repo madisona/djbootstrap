@@ -2,40 +2,24 @@
 {% load bootstrap_tags %}
 
 {% block navbar %}
-{% url index as index_url %}
-{% url hero as hero_url %}
-{% url container as container_url %}
-{% url fluid as fluid_url %}
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <a class="brand" href="#">Bootstrap Sample</a>
-      <ul class="nav">
-        <li class="{% activate index_url %}"><a href="{{ index_url }}">Home</a></li>
-        <li class="{% activate hero_url %}"><a href="{{ hero_url }}">Hero</a></li>
-        <li class="{% activate container_url %}"><a href="{{ container_url }}">Container</a></li>
-        <li class="{% activate fluid_url %}"><a href="{{ fluid_url }}">Fluid</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+  {% include "sample/navbar.html" %}
 {% endblock %}
 
 {% block sidebar %}
-<ul class="nav nav-list">
-  <li class="nav-header">Sidebar</li>
+<ul class="nav nav-stacked nav-pills">
+  <li class="nav-header disabled"><a>Sidebar</a></li>
   <li class="active"><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
-  <li class="nav-header">Sidebar</li>
+  <li class="nav-header disabled"><a>Sidebar</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
-  <li class="nav-header">Sidebar</li>
+  <li class="nav-header disabled"><a>Sidebar</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
   <li><a href="#">Link</a></li>
@@ -49,34 +33,34 @@
             <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
           </div>
           <div class="row-fluid">
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->
           <div class="row-fluid">
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span4">
+            <div class="col-md-4">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
